@@ -16,6 +16,9 @@ public interface GroupRepository extends JpaRepository<Group, Long> {
     @Query(value = "SELECT * FROM group_",nativeQuery = true)
     List<Group> findGroupsAll();
 
+    @Query(value = "SELECT * FROM group_ WHERE nom = :nom ORDER BY creation_date DESC LIMIT 1",nativeQuery = true)
+    Group findGroupByNom(@Param("nom") String nom);
+
     @Query(value = "SELECT * FROM group_ ORDER BY creation_date DESC",nativeQuery = true)
     List<Group> findAllByCreationDateOrderByCreationDate();
 

@@ -34,9 +34,7 @@ public class GroupAssign {
     @JoinColumn(name = "group_id",foreignKey = @ForeignKey(name = "group_assign_group_fkey"))
     private Group group_;
 
-    @CreationTimestamp
-    @Column(name = "assign_at",nullable = false)
-    private LocalDateTime assignedAt;
+
 
 
 }

@@ -6,9 +6,8 @@ import com.groupyfy.groupyfy.service.ContactService;
 import com.groupyfy.groupyfy.service.GroupService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
 
 import java.util.List;
@@ -72,6 +71,24 @@ public class GroupController {
         System.out.println(contact_no_group);
 
             return "add-group";
+    }
+
+    @PostMapping("/add")
+    public String saveGroup(Model model, @ModelAttribute("group") Group group,@RequestParam(value = "contact_ids", required = false) List<Long> contactIds){
+
+
+        // ? Adding a new Row in the group assign table
+
+        if(contactIds != null)
+            groupService.addGroupAssign(group.getNom(),contactIds);
+        else if(contactIds == null) {
+            groupService.addGroup(group.getNom());
+        }
+
+
+
+        //contactService.saveContact(contact);
+        return "redirect:/groups?message=added-successfully";
     }
 
 
