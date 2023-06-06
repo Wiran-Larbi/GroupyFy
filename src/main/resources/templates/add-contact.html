@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout.html">
+<head>
+  <meta charset="UTF-8">
+  <script src="https://cdn.tailwindcss.com" defer></script>
+  <title>$Title$</title>
+</head>
+<body>
+<main layout:fragment="section" class="mx-auto w-2/3">
+  <div class="flex flex-col gap-y-12 w-full h-full">
+    <div class="flex flex-col gap-2 w-1/3 mx-auto mt-8">
+      <h1 class="text-gray-700 text-3xl font-semibold">Personal Information</h1>
+      <span class="text-gray-400 text-medium">These information will be displayed feel free to discard.</span>
+      <span class="w-full border-b-2 border-gray-100 mt-8"></span>
+    </div>
+    <form class="w-1/3 mx-auto" method="post" th:object="${contact}" th:action="@{/contacts/add}">
+      <div class="grid gap-6 mb-6 md:grid-cols-2">
+        <div>
+          <label for="prenom" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Prénom</label>
+          <input type="text" id="prenom" th:field="*{prenom}" th:value="${contact.getPrenom()}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="John" required>
+        </div>
+        <div>
+          <label for="nom" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nom</label>
+          <input type="text" id="nom" th:field="*{nom}" th:value="${contact.getNom()}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Doe" required>
+        </div>
+        <div>
+          <label for="telephone_personnel" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Telephone Personnel</label>
+          <input type="tel" id="telephone_personnel" th:field="*{telephonePersonnel}" th:value="${contact.getTelephonePersonnel()}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="+212-677-566-111" required>
+          <span th:errors="*{telephonePersonnel}" class="text-red-500 text-sm"></span>
+        </div>
+        <div>
+          <label for="telephone_professionnel" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Telephone Professionnel</label>
+          <input type="tel" id="telephone_professionnel" th:field="*{telephoneProfessionnel}" th:value="${contact.getTelephoneProfessionnel()}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="+212-534-443-223" pattern="+[0-9]{3}-[0-9]{3}-[0-9]{3}-[0-9]{3}" required>
+          <span th:errors="*{telephoneProfessionnel}" class="text-red-500 text-sm"></span>
+        </div>
+        <div>
+          <label for="adress" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Adress</label>
+          <input type="text" id="adress" th:field="*{adresse}" th:value="${contact.getAdresse()}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Main .st" required>
+        </div>
+
+      </div>
+      <div class="mb-6">
+        <label for="email_personnel" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email Personnel</label>
+        <input type="email" id="email_personnel" th:field="*{emailPersonnel}" th:value="${contact.getEmailPersonnel()}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="john.doe@gmail.com" required>
+        <span th:errors="*{emailPersonnel}" class="text-red-500 text-sm"></span>
+      </div>
+      <div class="mb-6">
+        <label for="email_professionnel" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email Professionnel</label>
+        <input type="email" id="email_professionnel" th:field="*{emailProfessionnel}" th:value="${contact.getTelephoneProfessionnel()}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="john.doe@company.co" required>
+        <span th:errors="*{emailPersonnel}" class="text-red-500 text-sm"></span>
+      </div>
+      <div class="mb-6">
+        <label for="genre"  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Genre</label>
+        <input type="text" id="genre" th:field="*{genre}" th:value="${contact.getGenre()}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Male / Female" required>
+      </div>
+
+      <button type="submit" class="text-white bg-orange-500 hover:bg-orange-600 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Submit</button>
+    </form>
+  </div>
+  </div>
+  </div>
+
+</main>
+</body>
+</html>

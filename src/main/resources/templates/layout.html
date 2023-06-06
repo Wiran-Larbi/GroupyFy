@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script th:src="@{/scripts/mini_nav.js}" defer></script>
+    <title layout:title-pattern="$LAYOUT_TITLE">GroupiFy</title>
+
+    <style>
+        .scrollable-table {
+            max-height: 300px; /* Set the desired fixed height */
+
+        }
+        .sticky-th {
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+        <!-- Navigation and Search Bar  -->
+        <nav class="bg-gray-800">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div class="flex h-20 items-center">
+                    <div class="w-full flex items-center justify-between">
+                        <!--*  LOGO  *-->
+                        <div>
+                            <img class="h-full w-full" src="https://i.imgur.com/6JYlZ9u.png" alt="GroupiFy .co">
+                        </div>
+
+                        <div class="flex items-center">
+                            <form class="w-96">
+                                <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
+                                <div class="relative">
+                                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                        <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                                    </div>
+                                    <input type="search" id="default-search" class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-3xl bg-gray-50 focus:outline-orange-500 focus:ring-orange-500 focus:border-orange-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-orange-500 dark:focus:border-orange-500" placeholder="Search Contact, Group..." required>
+                                    <button type="submit" class="text-white absolute right-2.5 bottom-2.5 bg-orange-500 outline-none hover:bg-orange-700 focus:ring-2 focus:outline-none focus:ring-orange-400 font-medium rounded-2xl text-sm px-4 py-2">Search</button>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <section layout:fragment="section"></section>
+
+
+</body>
+
+<footer class="fixed left-0 right-0 bottom-0 mx-auto w-2/3 p-4 bg-white border-t-2 border-gray-200 ">
+    <span class="text-sm text-gray-500">© 2023 <a href="" class="hover:underline">GroupiFy™</a>. All Rights Reserved.
+    </span>
+</footer>
+
+
+</html>
