@@ -42,6 +42,8 @@ public class GroupyFyApplication {
     CommandLineRunner commandLineRunner(ContactRepository contactRepository, GroupRepository groupRepository, GroupAssignRepository groupAssignRepository) {
         return (args) -> {
 
+
+
             // * First Thing To do is To create a new Contacts
 
             //GroupAssign assign = new GroupAssign(generateContact(),new Group("Fight"));

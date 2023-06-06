@@ -1,10 +1,13 @@
 package com.groupyfy.groupyfy.repository;
 
+import com.groupyfy.groupyfy.model.Contact;
 import com.groupyfy.groupyfy.model.GroupAssign;
 import com.groupyfy.groupyfy.model.GroupAssignId;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+
+import java.util.List;
 
 public interface GroupAssignRepository extends JpaRepository<GroupAssign, GroupAssignId> {
 
@@ -13,4 +16,6 @@ public interface GroupAssignRepository extends JpaRepository<GroupAssign, GroupA
 
         @Query(value = "SELECT COUNT(*) FROM group_assign  WHERE group_id = :groupId",nativeQuery = true)
         Long findGroupCountById(@Param("groupId") Long id);
+
+
 }

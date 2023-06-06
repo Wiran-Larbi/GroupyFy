@@ -2,6 +2,7 @@ package com.groupyfy.groupyfy.controller;
 
 import com.groupyfy.groupyfy.model.Contact;
 import com.groupyfy.groupyfy.model.Group;
+import com.groupyfy.groupyfy.service.ContactService;
 import com.groupyfy.groupyfy.service.GroupService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -18,6 +19,7 @@ import java.util.List;
 public class GroupController {
 
     private GroupService groupService;
+    private ContactService contactService;
 
 
     @GetMapping()
@@ -60,6 +62,16 @@ public class GroupController {
             return "groups-ui";
         }
 
+    }
+
+    @GetMapping("/add")
+    public String addGroup(Model model){
+            List<Contact> contact_no_group = contactService.getContactsWithoutGroup();
+            model.addAttribute("group",new Group());
+            model.addAttribute("contacts",contact_no_group);
+        System.out.println(contact_no_group);
+
+            return "add-group";
     }
 
 

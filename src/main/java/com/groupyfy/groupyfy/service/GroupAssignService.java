@@ -1,8 +1,11 @@
 package com.groupyfy.groupyfy.service;
 
+import com.groupyfy.groupyfy.model.Contact;
 import com.groupyfy.groupyfy.repository.GroupAssignRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class GroupAssignService implements IGroupAssignService{
@@ -18,4 +21,6 @@ public class GroupAssignService implements IGroupAssignService{
     public Long GroupExistOrNot(Long groupId) {
         return groupAssignRepository.findGroupCountById(groupId);
     }
+
+
 }

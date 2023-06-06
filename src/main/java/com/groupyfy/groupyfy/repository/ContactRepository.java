@@ -42,6 +42,9 @@ public interface ContactRepository extends JpaRepository<Contact,Long> {
         @Query(value = "SELECT * FROM contact_ WHERE telephone_personnel = :telephone OR telephone_professionnel = :telephone",nativeQuery = true)
         Contact findContactByTelephone(@Param("telephone") String telephone);
 
+        @Query(value = "SELECT * FROM contact_ WHERE id NOT IN (SELECT contact_id FROM group_assign)",nativeQuery = true)
+        List<Contact> findContactsWithNoGroup();
+
 
         @Override
         void deleteById(Long id);
