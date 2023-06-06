@@ -46,6 +46,7 @@ public interface ContactRepository extends JpaRepository<Contact,Long> {
         List<Contact> findContactsWithNoGroup();
 
 
+
         @Override
         void deleteById(Long id);
 

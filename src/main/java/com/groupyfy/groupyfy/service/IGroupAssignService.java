@@ -17,6 +17,10 @@ public interface IGroupAssignService {
 
     void addAssign(GroupAssign groupAssign);
 
+    Long getGroupCountContacts(Long group_id);
+
+    String getGroupNameForContact(Long contact_id);
+
 
 
 }

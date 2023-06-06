@@ -20,6 +20,7 @@ public interface GroupAssignRepository extends JpaRepository<GroupAssign, GroupA
 
         @Query(value = "INSERT INTO group_assign(group_id,contact_id) VALUES (:group_id,:contact_id)",nativeQuery = true)
         void addAssign(@Param("group_id") Long group_id, @Param("contact_id") Long contact_id);
-
+        @Query(value = "SELECT g.nom FROM group_ g JOIN group_assign a ON g.id = a.group_id WHERE a.contact_id = :id LIMIT 1",nativeQuery = true)
+        String findGroupNameForContact(@Param("id") Long contact_id);
 
 }

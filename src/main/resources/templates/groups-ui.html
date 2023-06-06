@@ -138,13 +138,13 @@
               </div>
             </th>
             <td class="px-6 py-4">
-              <div class="font-normal text-gray-500" >None</div>
+              <div class="font-normal text-gray-500" th:text="${g.getNbContacts() == 0 ? 'None' : g.getNbContacts()}"></div>
 
             </td>
 
             <td class="flex flex-col gap-y-2 px-6 py-4">
               <!-- Modal toggle -->
-              <a th:href="@{/groups/edit?Id={Id}(Id=${g.getId()})}" type="button" data-modal-show="editUserModal" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+              <!--<a th:href="@{/groups/edit?Id={Id}(Id=${g.getId()})}" type="button" data-modal-show="editUserModal" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>-->
               <a th:href="@{/groups/delete?Id={Id}(Id=${g.getId()})}" type="button" data-modal-show="editUserModal" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Delete</a>
             </td>
           </tr>

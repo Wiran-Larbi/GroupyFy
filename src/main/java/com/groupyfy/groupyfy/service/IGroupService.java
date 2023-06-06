@@ -15,6 +15,8 @@ public interface IGroupService {
 
     List<Group> getAllGroupsSortByNomAsc();
 
+    Long getGroupContactCounts(Long group_id);
+
     int addGroupAssign(String nom, List<Long> ids);
 
     void addGroup(String nom);

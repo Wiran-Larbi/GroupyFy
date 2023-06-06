@@ -36,4 +36,14 @@ public class GroupAssignService implements IGroupAssignService{
     public void addAssign(GroupAssign groupAssign) {
         groupAssignRepository.save(groupAssign);
     }
+
+    @Override
+    public Long getGroupCountContacts(Long group_id) {
+        return  groupAssignRepository.findGroupCountById(group_id);
+    }
+
+    @Override
+    public String getGroupNameForContact(Long contact_id) {
+        return groupAssignRepository.findGroupNameForContact(contact_id);
+    }
 }

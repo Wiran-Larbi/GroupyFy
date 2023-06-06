@@ -24,6 +24,12 @@ public class GroupController {
     @GetMapping()
     public String groups(Model model){
         List<Group> groups = groupService.getAllGroups();
+
+        groups.forEach(group -> {
+            Long nbContacts = groupService.getGroupContactCounts(group.getId());
+            group.setNbContacts(nbContacts);
+        });
+
         model.addAttribute("groups",groups);
         model.addAttribute("groups_count",groups.size());
         return "groups-ui";

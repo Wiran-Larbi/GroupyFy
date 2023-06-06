@@ -54,17 +54,25 @@ public class GroupService implements IGroupService{
         // ? Finding the id of the saved group
         Group group = groupRepository.findGroupByNom(nom);
 
-        Contact contact = contactRepository.findContactById(contact_ids.get(0));
+        for (int i = 0; i < contact_ids.size(); i++){
+            Contact contact = contactRepository.findContactById(contact_ids.get(i));
 
-        GroupAssign groupAssign = new GroupAssign(contact,group);
+            GroupAssign groupAssign = new GroupAssign(contact,group);
 
-        groupAssignService.addAssign(groupAssign);
+            groupAssignService.addAssign(groupAssign);
+
+        }
 
         /*
         List<Long> contacts_ids = contact_ids;
         groupAssignService.addGroupContactAssign(group.getId(),contacts_ids.get(0));
         */
         return 1;
+    }
+
+    @Override
+    public Long getGroupContactCounts(Long group_id) {
+        return groupAssignService.getGroupCountContacts(group_id);
     }
 
     @Override
