@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ContactService {
+public class ContactService implements IContactService{
 
     @Autowired
     private ContactRepository contactRepository;
@@ -35,6 +35,13 @@ public class ContactService {
     public List<Contact> getContactByPhonetique(String nom) {
         return contactRepository.findByNomWherePhoneticMatch(nom,0.1);
     }
+
+    @Override
+    public List<Contact> getContactsWithoutGroup() {
+        return contactRepository.findContactsWithNoGroup();
+    }
+
+
     public void saveContact(Contact contact){
         contactRepository.save(contact);
     }

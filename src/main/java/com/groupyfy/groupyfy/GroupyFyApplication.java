@@ -42,6 +42,8 @@ public class GroupyFyApplication {
     CommandLineRunner commandLineRunner(ContactRepository contactRepository, GroupRepository groupRepository, GroupAssignRepository groupAssignRepository) {
         return (args) -> {
 
+
+
             // * First Thing To do is To create a new Contacts
 
             //GroupAssign assign = new GroupAssign(generateContact(),new Group("Fight"));
@@ -57,19 +59,19 @@ public class GroupyFyApplication {
 
 /*
             Contact contact = generateContact();
+*/
 
 
-
-
-            Contact contact1 = new Contact("Wiran","Larbi","+212 603 167 837","+212 566 345 112","221 Amyot Ville","Wiran.larbi@gmail.com","Wiran.Larbi@work.co","male");
-            Contact contact2 = new Contact("Wayrani","Souad","+212 622 445 102","+212 533 567 102","221 Mondo Ville","Wayrani.Souad@gmail.com","Wayrani.Souad@work.co","female");
-            Contact contact3 = new Contact("Uirane","Omar","+212 611 234 567","+212 511 667 778","4553 Hank City","Uirane.Omar@gmail.com","Uirane.Omar@work.co","male");
+            /*
+            Contact contact1 = new Contact("Wiran","Larbi","+212-603-167-837","+212-566-345-112","221 Amyot Ville","Wiran.larbi@gmail.com","Wiran.Larbi@work.co","Male");
+            Contact contact2 = generateContact();
+            Contact contact3 = generateContact();
             Contact contact4 = generateContact();
             Contact contact5 = generateContact();
 
 
-             contactRepository.saveAll(List.of(contact,contact1,contact2,contact3,contact4,contact5));
-*/
+             contactRepository.saveAll(List.of(contact1,contact2,contact3,contact4,contact5));
+            */
             /*
             // * Displaying Contacts By Alphabetique Ordre ASC
             System.out.println("Displaying Contacts by Alphabetic Order ASC");

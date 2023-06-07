@@ -15,6 +15,7 @@ public interface IContactService {
     List<Contact> getAllContactsSortByGenre();
     Contact getContactById(Long id);
     List<Contact> getContactByPhonetique(String nom);
+    List<Contact> getContactsWithoutGroup();
 
     void saveContact(Contact contact);
 

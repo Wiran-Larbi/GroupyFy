@@ -7,7 +7,7 @@ import jakarta.validation.constraints.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name = "contact_")
@@ -63,6 +63,9 @@ public class Contact {
     public void prePersist() {
         creationDate = LocalDateTime.now();
     }
+
+    @Transient
+    private String groupName;
 
     public Contact(String nom, String prenom, String telephonePersonnel, String telephoneProfessionnel, String adresse, String emailPersonnel, String emailProfessionnel, String genre) {
         this.nom = nom;

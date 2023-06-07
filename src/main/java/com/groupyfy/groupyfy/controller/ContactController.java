@@ -2,6 +2,7 @@ package com.groupyfy.groupyfy.controller;
 
 import com.groupyfy.groupyfy.model.Contact;
 import com.groupyfy.groupyfy.service.ContactService;
+import com.groupyfy.groupyfy.service.GroupAssignService;
 import com.groupyfy.groupyfy.service.IContactService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -20,10 +21,19 @@ import java.util.List;
 public class ContactController {
 
     private ContactService contactService;
+    private GroupAssignService groupAssignService;
 
     @GetMapping()
     public String contacts(Model model){
         List<Contact> contacts = contactService.getAllContactsAsc();
+
+        contacts.forEach(contact -> {
+            String groupName = groupAssignService.getGroupNameForContact(contact.getId());
+            System.out.println(groupName);
+            contact.setGroupName(groupName);
+        });
+
+
         model.addAttribute("contacts",contacts);
         model.addAttribute("contacts_count",contacts.size());
 

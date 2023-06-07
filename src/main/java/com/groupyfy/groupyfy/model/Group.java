@@ -33,6 +33,9 @@ public class Group {
         creationDate = LocalDateTime.now();
     }
 
+    @Transient
+    private Long NbContacts = 0L;
+
     // * Associations
     @OneToMany(mappedBy = "group_",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private Set<GroupAssign> groupAssigns;
