@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout.html">
+<head>
+  <meta charset="UTF-8">
+  <script src="https://cdn.tailwindcss.com" defer></script>
+  <title>$Title$</title>
+</head>
+
+<body>
+<main layout:fragment="section" class="mx-auto w-2/3">
+
+  <div class="flex flex-col gap-y-12 w-full h-full">
+    <div class="flex flex-col gap-2 w-1/3 mx-auto mt-8">
+      <h1 class="text-gray-700 text-3xl font-semibold">Personal Information</h1>
+      <span class="text-gray-400 text-medium">These information will be displayed feel free to discard.</span>
+      <span class="w-full border-b-2 border-gray-100 mt-8"></span>
+    </div>
+    <form class="w-1/3 mx-auto" method="post" th:object="${group}" th:action="@{/groups/add}">
+      <div class="grid justify-center items-center gap-6 mb-6 md:grid-cols-2">
+        <div>
+          <label for="nom" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nom Group</label>
+          <input type="text" id="nom"  th:field="*{nom}" th:value="${group.getNom()}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Familly" required>
+        </div>
+        <button type="submit" class="text-white bg-orange-500 hover:bg-orange-600 focus:ring-4 focus:outline-none focus:ring-orange-300 font-sm rounded-lg text-sm w-24 h-12 mt-6 px-1 py-1 text-center">Submit</button>
+      </div>
+
+      <!-- Displaying All The Contacts That Are not assigned To any group -->
+
+      <div class="max-h-96 overflow-y-scroll scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-gray-200">
+        <table class="scrollable-table w-full text-sm text-left text-gray-500 table-auto">
+          <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+          <tr class="sticky-th bg-gray-100 ">
+            <th scope="col" class="p-4">
+              <div class="flex items-center">
+                <input id="checkbox-all-search" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+              </div>
+            </th>
+            <th scope="col" class="px-6 py-3">
+              Name
+            </th>
+            <th scope="col" class="px-6 py-3">
+              Telephone
+            </th>
+
+          </tr>
+          </thead>
+          <tbody>
+          <tr th:each="c:${contacts}" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+            <td class="w-4 p-4">
+              <div class="flex items-center">
+                <input id="checkbox-table-search-2" type="checkbox" name="contact_ids" th:value="${c.getId()}" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+
+              </div>
+            </td>
+            <th scope="row" class="flex items-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+
+              <div class="pl-3">
+                <div class="text-base font-semibold" th:text="${c.getPrenom() + ' ' + c.getNom()}"></div>
+                <div class="font-normal text-gray-500" th:text="${c.getEmailPersonnel()}"></div>
+              </div>
+            </th>
+            <td class="px-6 py-4">
+              <div class="font-normal text-gray-500" th:text="${c.getTelephonePersonnel()}"></div>
+              <div class="font-normal text-gray-500" th:text="${c.getEmailProfessionnel()}"></div>
+            </td>
+
+            <!--
+            <td class="flex flex-col gap-y-2 px-6 py-4">
+
+              <a th:href="@{/contacts/edit?Id={Id}(Id=${c.getId()})}" type="button" data-modal-show="editUserModal" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+              <a th:href="@{/contacts/delete?Id={Id}(Id=${c.getId()})}" type="button" data-modal-show="editUserModal" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Delete</a>
+            </td>
+            -->
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </form>
+  </div>
+</main>
+</body>
+</html>
